@@ -1,0 +1,2580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <afterpay translate="label comment tooltip">
+            <label>AfterPay</label>
+            <tab>sales</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>335</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <afterpay_general translate="label comment tooltip" module="afterpay">
+                    <label>AfterPay Module - General Settings</label>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <version translate="label">
+                            <label>Version Information</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>afterpay/adminhtml_version</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                        <active translate="label comment tooltip">
+                            <label>Module enabled</label>
+                            <comment>Select Yes to enable the module.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <push_password translate="label comment">
+                            <label>Push Password (only for Belgium)</label>
+                            <comment>Your push password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </push_password>
+                        <success_redirect translate="label comment tooltip">
+                            <label>Success URL</label>
+                            <comment>The page a customer is redirected to when an order is accepted. Leave blank for default magento.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </success_redirect>
+                        <failure_redirect>
+                            <label>Failure URL</label>
+                            <comment>The page a customer is redirected to when an order is denied. Leave blank for default magento.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </failure_redirect>
+                        <validation_redirect>
+                            <label>Validation URL</label>
+                            <comment>The page a customer is redirected to when an order is denied by validation error. Leave blank for default magento.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </validation_redirect>
+                        <auto_invoice>
+                            <label>Auto-Invoice</label>
+                            <comment>Select Yes to automatically invoice orders in Magento when they are accepted by AfterPay</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_autoinvoiceMode</source_model>
+                            <sort_order>104</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_invoice>
+                        <auto_invoice_status>
+                            <label>Auto invoice status</label>
+                            <comment>Select status on which the invoice must be created</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_autoinvoiceStatuses</source_model>
+                            <sort_order>105</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <auto_invoice>yes-status</auto_invoice>
+                            </depends>
+                        </auto_invoice_status>
+                        <send_invoice>
+                            <label>Send Invoice Mail</label>
+                            <comment>Select Yes to send Magento Invoice mail</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>106</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </send_invoice>
+                        <separate_discount>
+                            <label>Separate Discount</label>
+                            <comment>Select Yes to sent the discount as separate order line to AfterPay</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>107</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </separate_discount>
+                        <debug_mode>
+                            <label>Debug</label>
+                            <comment>Select if you want extra information to debug.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_debugMode</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </debug_mode>
+                        <debug_mail>
+                            <label>Debug E-mail</label>
+                            <comment>For multiple emails separate them using a comma.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <debug_mode>email</debug_mode>
+                            </depends>
+                        </debug_mail>
+                    </fields>
+                </afterpay_general>
+                <afterpay_tax>
+                    <label>AfterPay Module - Tax Settings</label>
+                    <sort_order>400</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <high translate="label comment tooltip">
+                            <label>High VAT tax classes</label>
+                            <comment>Select which tax classes count as 'high' VAT</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_taxClasses</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </high> 
+                        <low translate="label comment tooltip">
+                            <label>Low VAT tax classes</label>
+                            <comment>Select which tax classes count as 'low' VAT</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_taxClasses</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </low> 
+                        <zero translate="label comment tooltip">
+                            <label>Zero VAT tax classes</label>
+                            <comment>Select which tax classes count as 'zero' VAT</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_taxClasses</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zero> 
+                        <no translate="label comment tooltip">
+                            <label>No VAT tax classes</label>
+                            <comment>Select which tax classes count as 'no' VAT</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_taxClasses</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </no>
+                        <discount_tax_class>
+                            <label>Tax class for Discount</label>
+                            <comment>Select which tax class should be used for the Discount</comment>
+                            <tooltip>Default none is selected as the discount tax class.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_taxClasses</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </discount_tax_class>
+                    </fields>
+                </afterpay_tax>
+                <afterpay_portfolio_a>
+                    <label>AfterPay Module - Portfolio A</label>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment tooltip">
+                            <label>Portfolio enabled</label>
+                            <comment>Select Yes to enable the portfolio.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <current_ip_address_for_restriction translate="label comment tooltip">
+                            <label>Your current IP Adresses</label>
+                            <frontend_model>afterpay/adminhtml_ipaddress</frontend_model>
+                            <sort_order>11</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </current_ip_address_for_restriction>
+                        <limit_by_ip translate="label comment tooltip">
+                            <label>Show payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip>
+                        <limit_by_ip_ips translate="label comment tooltip">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order> 
+                            <depends>
+                                <limit_by_ip>1</limit_by_ip>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip_ips>
+                        <reversed_iprestriction translate="label comment">
+                            <label>Hide payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction>
+                        <reversed_iprestriction_ips translate="label comment">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <reversed_iprestriction>1</reversed_iprestriction>
+                            </depends>
+                            <sort_order>15</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction_ips>
+                        <mode translate="label comment tooltip">
+                            <label>Mode</label>
+                            <comment>Select Live to preform live transactions.</comment>
+                            <tooltip>When the base configuration is still in test mode. Live mode of the portfolio is overruled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_testLive</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode> 
+                        <live_merchant_id translate="label comment tooltip">
+                            <label>Live merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <tooltip>To get an account contact AfterPay.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_merchant_id>
+                        <test_merchant_id translate="label comment">
+                            <label>Test merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_merchant_id>
+                        <portfolio_id>
+                            <label>Portfolio ID</label>
+                            <comment>Afterpay will deliver a portfolio ID</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_id>
+                        <live_password translate="label comment">
+                            <label>Live Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_password>
+                        <test_password translate="label comment">
+                            <label>Test Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_password>
+                        <portfolio_country>
+                            <label>Portfolio country</label>
+                            <comment>Select the country of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioCountry</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_country>
+                        <portfolio_type>
+                            <label>Portfolio type</label>
+                            <comment>Select the type of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_type>
+                        <portfolio_showbankaccount>
+                            <label>Show bankaccount input field</label>
+                            <comment>Select Yes to show the bankaccount input field.</comment>
+                            <tooltip>When No is selected the bankaccount number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>51</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showbankaccount>
+                        <portfolio_showgender>
+                            <label>Show gender input field</label>
+                            <comment>Select Yes to show the gender input field.</comment>
+                            <tooltip>When No is selected the gender is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>52</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showgender>
+                        <portfolio_showphonenumber>
+                            <label>Show phone number input field</label>
+                            <comment>Select Yes to show the phone number input field.</comment>
+                            <tooltip>When No is selected the phone number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>53</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showphonenumber>
+                        <portfolio_showdob>
+                            <label>Show date of birth input field</label>
+                            <comment>Select Yes to show the date of birth input field.</comment>
+                            <tooltip>When No is selected the date of birth is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>54</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showdob>
+                        <portfolio_showterms>
+                            <label>Show terms and conditions checkbox</label>
+                            <comment>Select Yes to show the terms and conditions checkbox.</comment>
+                            <tooltip>When No is selected the AfterPay Terms and Conditions checkbox is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showterms>
+                        <area>
+                            <label>Portfolio area</label>
+                            <comment>Select where the portfolio will be available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioArea</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </area>
+                        <portfolio_label>
+                            <label>Portfolio label</label>
+                            <comment>The label shown on the frontend</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_label>
+                        <portfolio_footnote>
+                            <label>Portfolio footnote</label>
+                            <comment>Shown after label</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_footnote>
+                        <portfolio_extended_information>
+                            <label>Portfolio extended information</label>
+                            <comment>Extended information about the AfterPay Payment Method which for example will be included in transactional emails.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_extended_information>
+                        <portfolio_min_amount>
+                            <label>Minimal Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_min_amount>
+                        <portfolio_max_amount>
+                            <label>Maximum Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount>
+                        <portfolio_max_amount_new_customers>
+                            <label>Maximum Amount for New AfterPay Customers</label>
+                            <comment>N.B. This value does not influence whether or not this portfolio is available. This is only used as a label!</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount_new_customers>
+                        <order_status_acceptedni translate="label">
+                            <label>Status Accepted No Invoice</label>
+                            <comment>New is the default state for a new order without invoice.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNewni</source_model>
+                            <sort_order>119</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_acceptedni>
+                        <order_status_pending translate="label">
+                            <label>Status Pending</label>
+                            <comment>Pending is the default state for a new order.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to new.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_pending>
+                        <order_status_accepted translate="label">
+                            <label>Status Accepted</label>
+                            <comment>Processing is the default state for an order with an invoice or a shipment.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Refused</label>
+                            <comment>Canceled is the default state for an unprocessed order terminated.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesCanceled</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refused>
+                        <allowspecific translate="label">
+                            <label>Allowed Countries</label>
+                            <tooltip>Select whether all countries may make use of this payment option, or only specific countries.</tooltip>
+                            <frontend_type>allowspecific</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific Country</label>
+                            <comment>Only available if 'Payment from applicable countries' is set to 'specific countries'.</comment>
+                            <tooltip>Define which countries are allowed to make use of this portfolio.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <allowspecific_customers translate="label">
+                            <label>Allowed Client groups</label>
+                            <tooltip>Select whether all customers may make use of this payment option, or only customers from specific customer groups.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_allowSpecificCustomers</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific_customers>
+                        <specificcustomers translate="label">
+                            <label>Specific client groups</label>
+                            <comment>Only available if 'Allowed Client groups' is set to 'specific client groups'.</comment>
+                            <tooltip>Define which client groups are allowed to make use of this portfolio.</tooltip>
+                            <depends>
+                                <allowspecific_customers>1</allowspecific_customers>
+                            </depends>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_customerGroups</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcustomers>
+                        <notallowedshippingmethods translate="label comment tooltip">
+                            <label>Not allowed by shipping methods</label>
+                            <comment>Select all the shipping methods where the AfterPay module should NOT be allowed for.</comment>
+                            <tooltip>Use CTRL + mouseclick to select multiple entries.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>225</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notallowedshippingmethods>
+                        <advisoryprocess>
+                            <label>Advisory process</label>
+                            <comment>Select Yes to enable advisory process.</comment>
+                            <tooltip>Only use in cooperation with AfterPay</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>226</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advisoryprocess>
+                        <sort_order>
+                            <label>Sort order</label>
+                            <tooltip>This value will determine in what order the portfolio's will appear to the customer</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </afterpay_portfolio_a>
+                <afterpay_portfolio_b>
+                    <label>AfterPay Module - Portfolio B</label>
+                    <sort_order>600</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment tooltip">
+                            <label>Portfolio enabled</label>
+                            <comment>Select Yes to enable the portfolio.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <current_ip_address_for_restriction translate="label comment tooltip">
+                            <label>Your current IP Adresses</label>
+                            <frontend_model>afterpay/adminhtml_ipaddress</frontend_model>
+                            <sort_order>11</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </current_ip_address_for_restriction>
+                        <limit_by_ip translate="label comment tooltip">
+                            <label>Show payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip>
+                        <limit_by_ip_ips translate="label comment tooltip">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order> 
+                            <depends>
+                                <limit_by_ip>1</limit_by_ip>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip_ips>
+                        <reversed_iprestriction translate="label comment">
+                            <label>Hide payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction>
+                        <reversed_iprestriction_ips translate="label comment">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <reversed_iprestriction>1</reversed_iprestriction>
+                            </depends>
+                            <sort_order>15</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction_ips>
+                        <mode translate="label comment tooltip">
+                            <label>Mode</label>
+                            <comment>Select Live to preform live transactions.</comment>
+                            <tooltip>When the base configuration is still in test mode. Live mode of the portfolio is overruled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_testLive</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode> 
+                        <live_merchant_id translate="label comment tooltip">
+                            <label>Live merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <tooltip>To get an account contact AfterPay.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_merchant_id>
+                        <test_merchant_id translate="label comment">
+                            <label>Test merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_merchant_id>
+                        <portfolio_id>
+                            <label>Portfolio ID</label>
+                            <comment>Afterpay will deliver a portfolio ID</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_id>
+                        <live_password translate="label comment">
+                            <label>Live Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_password>
+                        <test_password translate="label comment">
+                            <label>Test Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_password>
+                        <portfolio_country>
+                            <label>Portfolio country</label>
+                            <comment>Select the country of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioCountry</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_country>
+                        <portfolio_type>
+                            <label>Portfolio type</label>
+                            <comment>Select the type of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_type>
+                        <portfolio_showbankaccount>
+                            <label>Show bankaccount input field</label>
+                            <comment>Select Yes to show the bankaccount input field.</comment>
+                            <tooltip>When No is selected the bankaccount number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>51</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showbankaccount>
+                        <portfolio_showgender>
+                            <label>Show gender input field</label>
+                            <comment>Select Yes to show the gender input field.</comment>
+                            <tooltip>When No is selected the gender is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>52</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showgender>
+                        <portfolio_showphonenumber>
+                            <label>Show phone number input field</label>
+                            <comment>Select Yes to show the phone number input field.</comment>
+                            <tooltip>When No is selected the phone number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>53</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showphonenumber>
+                        <portfolio_showdob>
+                            <label>Show date of birth input field</label>
+                            <comment>Select Yes to show the date of birth input field.</comment>
+                            <tooltip>When No is selected the date of birth is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>54</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showdob>
+                        <portfolio_showterms>
+                            <label>Show terms and conditions checkbox</label>
+                            <comment>Select Yes to show the terms and conditions checkbox.</comment>
+                            <tooltip>When No is selected the AfterPay Terms and Conditions checkbox is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showterms>
+                        <area>
+                            <label>Portfolio area</label>
+                            <comment>Select where the portfolio will be available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioArea</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </area>
+                        <portfolio_label>
+                            <label>Portfolio label</label>
+                            <comment>The label shown on the frontend</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_label>
+                        <portfolio_footnote>
+                            <label>Portfolio footnote</label>
+                            <comment>Shown after label</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_footnote>
+                        <portfolio_extended_information>
+                            <label>Portfolio extended information</label>
+                            <comment>Extended information about the AfterPay Payment Method which for example will be included in transactional emails.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_extended_information>
+                        <portfolio_min_amount>
+                            <label>Minimal Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_min_amount>
+                        <portfolio_max_amount>
+                            <label>Maximum Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount>
+                        <portfolio_max_amount_new_customers>
+                            <label>Maximum Amount for New AfterPay Customers</label>
+                            <comment>N.B. This value does not influence whether or not this portfolio is available. This is only used as a label!</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount_new_customers>
+                        <order_status_acceptedni translate="label">
+                            <label>Status Accepted No Invoice</label>
+                            <comment>New is the default state for a new order without invoice.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNewni</source_model>
+                            <sort_order>119</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_acceptedni>
+                        <order_status_pending translate="label">
+                            <label>Status Pending</label>
+                            <comment>Pending is the default state for a new order.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to new.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_pending>
+                        <order_status_accepted translate="label">
+                            <label>Status Accepted</label>
+                            <comment>Processing is the default state for an order with an invoice or a shipment.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Refused</label>
+                            <comment>Canceled is the default state for an unprocessed order terminated.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesCanceled</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refused>
+                        <allowspecific translate="label">
+                            <label>Allowed Countries</label>
+                            <tooltip>Select whether all countries may make use of this payment option, or only specific countries.</tooltip>
+                            <frontend_type>allowspecific</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific Country</label>
+                            <comment>Only available if 'Payment from applicable countries' is set to 'specific countries'.</comment>
+                            <tooltip>Define which countries are allowed to make use of this portfolio.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <allowspecific_customers translate="label">
+                            <label>Allowed Client groups</label>
+                            <tooltip>Select whether all customers may make use of this payment option, or only customers from specific customer groups.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_allowSpecificCustomers</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific_customers>
+                        <specificcustomers translate="label">
+                            <label>Specific client groups</label>
+                            <comment>Only available if 'Allowed Client groups' is set to 'specific client groups'.</comment>
+                            <tooltip>Define which client groups are allowed to make use of this portfolio.</tooltip>
+                            <depends>
+                                <allowspecific_customers>1</allowspecific_customers>
+                            </depends>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_customerGroups</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcustomers>
+                        <notallowedshippingmethods translate="label comment tooltip">
+                            <label>Not allowed by shipping methods</label>
+                            <comment>Select all the shipping methods where the AfterPay module should NOT be allowed for.</comment>
+                            <tooltip>Use CTRL + mouseclick to select multiple entries.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>225</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notallowedshippingmethods>
+                        <advisoryprocess>
+                            <label>Advisory process</label>
+                            <comment>Select Yes to enable advisory process.</comment>
+                            <tooltip>Only use in cooperation with AfterPay</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>226</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advisoryprocess>
+                        <sort_order>
+                            <label>Sort order</label>
+                            <tooltip>This value will determine in what order the portfolio's will appear to the customer</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </afterpay_portfolio_b>
+                <afterpay_portfolio_c>
+                    <label>AfterPay Module - Portfolio C</label>
+                    <sort_order>700</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment tooltip">
+                            <label>Portfolio enabled</label>
+                            <comment>Select Yes to enable the portfolio.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <current_ip_address_for_restriction translate="label comment tooltip">
+                            <label>Your current IP Adresses</label>
+                            <frontend_model>afterpay/adminhtml_ipaddress</frontend_model>
+                            <sort_order>11</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </current_ip_address_for_restriction>
+                        <limit_by_ip translate="label comment tooltip">
+                            <label>Show payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip>
+                        <limit_by_ip_ips translate="label comment tooltip">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order> 
+                            <depends>
+                                <limit_by_ip>1</limit_by_ip>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip_ips>
+                        <reversed_iprestriction translate="label comment">
+                            <label>Hide payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction>
+                        <reversed_iprestriction_ips translate="label comment">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <reversed_iprestriction>1</reversed_iprestriction>
+                            </depends>
+                            <sort_order>15</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction_ips>
+                        <mode translate="label comment tooltip">
+                            <label>Mode</label>
+                            <comment>Select Live to preform live transactions.</comment>
+                            <tooltip>When the base configuration is still in test mode. Live mode of the portfolio is overruled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_testLive</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode> 
+                        <live_merchant_id translate="label comment tooltip">
+                            <label>Live merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <tooltip>To get an account contact AfterPay.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_merchant_id>
+                        <test_merchant_id translate="label comment">
+                            <label>Test merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_merchant_id>
+                        <portfolio_id>
+                            <label>Portfolio ID</label>
+                            <comment>Afterpay will deliver a portfolio ID</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_id>
+                        <live_password translate="label comment">
+                            <label>Live Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_password>
+                        <test_password translate="label comment">
+                            <label>Test Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_password>
+                        <portfolio_country>
+                            <label>Portfolio country</label>
+                            <comment>Select the country of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioCountry</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_country>
+                        <portfolio_type>
+                            <label>Portfolio type</label>
+                            <comment>Select the type of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_type>
+                        <portfolio_showbankaccount>
+                            <label>Show bankaccount input field</label>
+                            <comment>Select Yes to show the bankaccount input field.</comment>
+                            <tooltip>When No is selected the bankaccount number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>51</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showbankaccount>
+                        <portfolio_showgender>
+                            <label>Show gender input field</label>
+                            <comment>Select Yes to show the gender input field.</comment>
+                            <tooltip>When No is selected the gender is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>52</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showgender>
+                        <portfolio_showphonenumber>
+                            <label>Show phone number input field</label>
+                            <comment>Select Yes to show the phone number input field.</comment>
+                            <tooltip>When No is selected the phone number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>53</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showphonenumber>
+                        <portfolio_showdob>
+                            <label>Show date of birth input field</label>
+                            <comment>Select Yes to show the date of birth input field.</comment>
+                            <tooltip>When No is selected the date of birth is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>54</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showdob>
+                        <portfolio_showterms>
+                            <label>Show terms and conditions checkbox</label>
+                            <comment>Select Yes to show the terms and conditions checkbox.</comment>
+                            <tooltip>When No is selected the AfterPay Terms and Conditions checkbox is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showterms>
+                        <area>
+                            <label>Portfolio area</label>
+                            <comment>Select where the portfolio will be available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioArea</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </area>
+                        <portfolio_label>
+                            <label>Portfolio label</label>
+                            <comment>The label shown on the frontend</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_label>
+                        <portfolio_footnote>
+                            <label>Portfolio footnote</label>
+                            <comment>Shown after label</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_footnote>
+                        <portfolio_extended_information>
+                            <label>Portfolio extended information</label>
+                            <comment>Extended information about the AfterPay Payment Method which for example will be included in transactional emails.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_extended_information>
+                        <portfolio_min_amount>
+                            <label>Minimal Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_min_amount>
+                        <portfolio_max_amount>
+                            <label>Maximum Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount>
+                        <portfolio_max_amount_new_customers>
+                            <label>Maximum Amount for New AfterPay Customers</label>
+                            <comment>N.B. This value does not influence whether or not this portfolio is available. This is only used as a label!</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount_new_customers>
+                        <order_status_acceptedni translate="label">
+                            <label>Status Accepted No Invoice</label>
+                            <comment>New is the default state for a new order without invoice.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNewni</source_model>
+                            <sort_order>119</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_acceptedni>
+                        <order_status_pending translate="label">
+                            <label>Status Pending</label>
+                            <comment>Pending is the default state for a new order.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to new.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_pending>
+                        <order_status_accepted translate="label">
+                            <label>Status Accepted</label>
+                            <comment>Processing is the default state for an order with an invoice or a shipment.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Refused</label>
+                            <comment>Canceled is the default state for an unprocessed order terminated.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesCanceled</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refused>
+                        <allowspecific translate="label">
+                            <label>Allowed Countries</label>
+                            <tooltip>Select whether all countries may make use of this payment option, or only specific countries.</tooltip>
+                            <frontend_type>allowspecific</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific Country</label>
+                            <comment>Only available if 'Payment from applicable countries' is set to 'specific countries'.</comment>
+                            <tooltip>Define which countries are allowed to make use of this portfolio.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <allowspecific_customers translate="label">
+                            <label>Allowed Client groups</label>
+                            <tooltip>Select whether all customers may make use of this payment option, or only customers from specific customer groups.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_allowSpecificCustomers</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific_customers>
+                        <specificcustomers translate="label">
+                            <label>Specific client groups</label>
+                            <comment>Only available if 'Allowed Client groups' is set to 'specific client groups'.</comment>
+                            <tooltip>Define which client groups are allowed to make use of this portfolio.</tooltip>
+                            <depends>
+                                <allowspecific_customers>1</allowspecific_customers>
+                            </depends>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_customerGroups</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcustomers>
+                        <notallowedshippingmethods translate="label comment tooltip">
+                            <label>Not allowed by shipping methods</label>
+                            <comment>Select all the shipping methods where the AfterPay module should NOT be allowed for.</comment>
+                            <tooltip>Use CTRL + mouseclick to select multiple entries.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>225</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notallowedshippingmethods>
+                        <advisoryprocess>
+                            <label>Advisory process</label>
+                            <comment>Select Yes to enable advisory process.</comment>
+                            <tooltip>Only use in cooperation with AfterPay</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>226</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advisoryprocess>
+                        <sort_order>
+                            <label>Sort order</label>
+                            <tooltip>This value will determine in what order the portfolio's will appear to the customer</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </afterpay_portfolio_c>
+                <afterpay_portfolio_d>
+                    <label>AfterPay Module - Portfolio D</label>
+                    <sort_order>800</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment tooltip">
+                            <label>Portfolio enabled</label>
+                            <comment>Select Yes to enable the portfolio.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <current_ip_address_for_restriction translate="label comment tooltip">
+                            <label>Your current IP Adresses</label>
+                            <frontend_model>afterpay/adminhtml_ipaddress</frontend_model>
+                            <sort_order>11</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </current_ip_address_for_restriction>
+                        <limit_by_ip translate="label comment tooltip">
+                            <label>Show payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip>
+                        <limit_by_ip_ips translate="label comment tooltip">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order> 
+                            <depends>
+                                <limit_by_ip>1</limit_by_ip>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip_ips>
+                        <reversed_iprestriction translate="label comment">
+                            <label>Hide payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction>
+                        <reversed_iprestriction_ips translate="label comment">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <reversed_iprestriction>1</reversed_iprestriction>
+                            </depends>
+                            <sort_order>15</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction_ips>
+                        <mode translate="label comment tooltip">
+                            <label>Mode</label>
+                            <comment>Select Live to preform live transactions.</comment>
+                            <tooltip>When the base configuration is still in test mode. Live mode of the portfolio is overruled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_testLive</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode> 
+                        <live_merchant_id translate="label comment tooltip">
+                            <label>Live merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <tooltip>To get an account contact AfterPay.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_merchant_id>
+                        <test_merchant_id translate="label comment">
+                            <label>Test merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_merchant_id>
+                        <portfolio_id>
+                            <label>Portfolio ID</label>
+                            <comment>Afterpay will deliver a portfolio ID</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_id>
+                        <live_password translate="label comment">
+                            <label>Live Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_password>
+                        <test_password translate="label comment">
+                            <label>Test Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_password>
+                        <portfolio_country>
+                            <label>Portfolio country</label>
+                            <comment>Select the country of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioCountry</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_country>
+                        <portfolio_type>
+                            <label>Portfolio type</label>
+                            <comment>Select the type of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_type>
+                        <portfolio_showbankaccount>
+                            <label>Show bankaccount input field</label>
+                            <comment>Select Yes to show the bankaccount input field.</comment>
+                            <tooltip>When No is selected the bankaccount number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>51</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showbankaccount>
+                        <portfolio_showgender>
+                            <label>Show gender input field</label>
+                            <comment>Select Yes to show the gender input field.</comment>
+                            <tooltip>When No is selected the gender is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>52</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showgender>
+                        <portfolio_showphonenumber>
+                            <label>Show phone number input field</label>
+                            <comment>Select Yes to show the phone number input field.</comment>
+                            <tooltip>When No is selected the phone number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>53</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showphonenumber>
+                        <portfolio_showdob>
+                            <label>Show date of birth input field</label>
+                            <comment>Select Yes to show the date of birth input field.</comment>
+                            <tooltip>When No is selected the date of birth is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>54</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showdob>
+                        <portfolio_showterms>
+                            <label>Show terms and conditions checkbox</label>
+                            <comment>Select Yes to show the terms and conditions checkbox.</comment>
+                            <tooltip>When No is selected the AfterPay Terms and Conditions checkbox is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showterms>
+                        <area>
+                            <label>Portfolio area</label>
+                            <comment>Select where the portfolio will be available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioArea</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </area>
+                        <portfolio_label>
+                            <label>Portfolio label</label>
+                            <comment>The label shown on the frontend</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_label>
+                        <portfolio_footnote>
+                            <label>Portfolio footnote</label>
+                            <comment>Shown after label</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_footnote>
+                        <portfolio_extended_information>
+                            <label>Portfolio extended information</label>
+                            <comment>Extended information about the AfterPay Payment Method which for example will be included in transactional emails.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_extended_information>
+                        <portfolio_min_amount>
+                            <label>Minimal Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_min_amount>
+                        <portfolio_max_amount>
+                            <label>Maximum Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount>
+                        <portfolio_max_amount_new_customers>
+                            <label>Maximum Amount for New AfterPay Customers</label>
+                            <comment>N.B. This value does not influence whether or not this portfolio is available. This is only used as a label!</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount_new_customers>
+                        <order_status_acceptedni translate="label">
+                            <label>Status Accepted No Invoice</label>
+                            <comment>New is the default state for a new order without invoice.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNewni</source_model>
+                            <sort_order>119</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_acceptedni>
+                        <order_status_pending translate="label">
+                            <label>Status Pending</label>
+                            <comment>Pending is the default state for a new order.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to new.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_pending>
+                        <order_status_accepted translate="label">
+                            <label>Status Accepted</label>
+                            <comment>Processing is the default state for an order with an invoice or a shipment.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Refused</label>
+                            <comment>Canceled is the default state for an unprocessed order terminated.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesCanceled</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refused>
+                        <allowspecific translate="label">
+                            <label>Allowed Countries</label>
+                            <tooltip>Select whether all countries may make use of this payment option, or only specific countries.</tooltip>
+                            <frontend_type>allowspecific</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific Country</label>
+                            <comment>Only available if 'Payment from applicable countries' is set to 'specific countries'.</comment>
+                            <tooltip>Define which countries are allowed to make use of this portfolio.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <allowspecific_customers translate="label">
+                            <label>Allowed Client groups</label>
+                            <tooltip>Select whether all customers may make use of this payment option, or only customers from specific customer groups.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_allowSpecificCustomers</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific_customers>
+                        <specificcustomers translate="label">
+                            <label>Specific client groups</label>
+                            <comment>Only available if 'Allowed Client groups' is set to 'specific client groups'.</comment>
+                            <tooltip>Define which client groups are allowed to make use of this portfolio.</tooltip>
+                            <depends>
+                                <allowspecific_customers>1</allowspecific_customers>
+                            </depends>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_customerGroups</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcustomers>
+                        <notallowedshippingmethods translate="label comment tooltip">
+                            <label>Not allowed by shipping methods</label>
+                            <comment>Select all the shipping methods where the AfterPay module should NOT be allowed for.</comment>
+                            <tooltip>Use CTRL + mouseclick to select multiple entries.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>225</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notallowedshippingmethods>
+                        <advisoryprocess>
+                            <label>Advisory process</label>
+                            <comment>Select Yes to enable advisory process.</comment>
+                            <tooltip>Only use in cooperation with AfterPay</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>226</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advisoryprocess>
+                        <sort_order>
+                            <label>Sort order</label>
+                            <tooltip>This value will determine in what order the portfolio's will appear to the customer</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </afterpay_portfolio_d>
+                <afterpay_portfolio_e>
+                    <label>AfterPay Module - Portfolio E</label>
+                    <sort_order>900</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment tooltip">
+                            <label>Portfolio enabled</label>
+                            <comment>Select Yes to enable the portfolio.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <current_ip_address_for_restriction translate="label comment tooltip">
+                            <label>Your current IP Adresses</label>
+                            <frontend_model>afterpay/adminhtml_ipaddress</frontend_model>
+                            <sort_order>11</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </current_ip_address_for_restriction>
+                        <limit_by_ip translate="label comment tooltip">
+                            <label>Show payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip>
+                        <limit_by_ip_ips translate="label comment tooltip">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order> 
+                            <depends>
+                                <limit_by_ip>1</limit_by_ip>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip_ips>
+                        <reversed_iprestriction translate="label comment">
+                            <label>Hide payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction>
+                        <reversed_iprestriction_ips translate="label comment">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <reversed_iprestriction>1</reversed_iprestriction>
+                            </depends>
+                            <sort_order>15</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction_ips>
+                        <mode translate="label comment tooltip">
+                            <label>Mode</label>
+                            <comment>Select Live to preform live transactions.</comment>
+                            <tooltip>When the base configuration is still in test mode. Live mode of the portfolio is overruled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_testLive</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode> 
+                        <live_merchant_id translate="label comment tooltip">
+                            <label>Live merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <tooltip>To get an account contact AfterPay.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_merchant_id>
+                        <test_merchant_id translate="label comment">
+                            <label>Test merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_merchant_id>
+                        <portfolio_id>
+                            <label>Portfolio ID</label>
+                            <comment>Afterpay will deliver a portfolio ID</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_id>
+                        <live_password translate="label comment">
+                            <label>Live Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_password>
+                        <test_password translate="label comment">
+                            <label>Test Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_password>
+                        <portfolio_country>
+                            <label>Portfolio country</label>
+                            <comment>Select the country of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioCountry</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_country>
+                        <portfolio_type>
+                            <label>Portfolio type</label>
+                            <comment>Select the type of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_type>
+                        <portfolio_showbankaccount>
+                            <label>Show bankaccount input field</label>
+                            <comment>Select Yes to show the bankaccount input field.</comment>
+                            <tooltip>When No is selected the bankaccount number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>51</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showbankaccount>
+                        <portfolio_showgender>
+                            <label>Show gender input field</label>
+                            <comment>Select Yes to show the gender input field.</comment>
+                            <tooltip>When No is selected the gender is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>52</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showgender>
+                        <portfolio_showphonenumber>
+                            <label>Show phone number input field</label>
+                            <comment>Select Yes to show the phone number input field.</comment>
+                            <tooltip>When No is selected the phone number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>53</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showphonenumber>
+                        <portfolio_showdob>
+                            <label>Show date of birth input field</label>
+                            <comment>Select Yes to show the date of birth input field.</comment>
+                            <tooltip>When No is selected the date of birth is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>54</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showdob>
+                        <portfolio_showterms>
+                            <label>Show terms and conditions checkbox</label>
+                            <comment>Select Yes to show the terms and conditions checkbox.</comment>
+                            <tooltip>When No is selected the AfterPay Terms and Conditions checkbox is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showterms>
+                        <area>
+                            <label>Portfolio area</label>
+                            <comment>Select where the portfolio will be available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioArea</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </area>
+                        <portfolio_label>
+                            <label>Portfolio label</label>
+                            <comment>The label shown on the frontend</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_label>
+                        <portfolio_footnote>
+                            <label>Portfolio footnote</label>
+                            <comment>Shown after label</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_footnote>
+                        <portfolio_extended_information>
+                            <label>Portfolio extended information</label>
+                            <comment>Extended information about the AfterPay Payment Method which for example will be included in transactional emails.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_extended_information>
+                        <portfolio_min_amount>
+                            <label>Minimal Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_min_amount>
+                        <portfolio_max_amount>
+                            <label>Maximum Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount>
+                        <portfolio_max_amount_new_customers>
+                            <label>Maximum Amount for New AfterPay Customers</label>
+                            <comment>N.B. This value does not influence whether or not this portfolio is available. This is only used as a label!</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount_new_customers>
+                        <order_status_acceptedni translate="label">
+                            <label>Status Accepted No Invoice</label>
+                            <comment>New is the default state for a new order without invoice.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNewni</source_model>
+                            <sort_order>119</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_acceptedni>
+                        <order_status_pending translate="label">
+                            <label>Status Pending</label>
+                            <comment>Pending is the default state for a new order.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to new.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_pending>
+                        <order_status_accepted translate="label">
+                            <label>Status Accepted</label>
+                            <comment>Processing is the default state for an order with an invoice or a shipment.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Refused</label>
+                            <comment>Canceled is the default state for an unprocessed order terminated.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesCanceled</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refused>
+                        <allowspecific translate="label">
+                            <label>Allowed Countries</label>
+                            <tooltip>Select whether all countries may make use of this payment option, or only specific countries.</tooltip>
+                            <frontend_type>allowspecific</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific Country</label>
+                            <comment>Only available if 'Payment from applicable countries' is set to 'specific countries'.</comment>
+                            <tooltip>Define which countries are allowed to make use of this portfolio.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <allowspecific_customers translate="label">
+                            <label>Allowed Client groups</label>
+                            <tooltip>Select whether all customers may make use of this payment option, or only customers from specific customer groups.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_allowSpecificCustomers</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific_customers>
+                        <specificcustomers translate="label">
+                            <label>Specific client groups</label>
+                            <comment>Only available if 'Allowed Client groups' is set to 'specific client groups'.</comment>
+                            <tooltip>Define which client groups are allowed to make use of this portfolio.</tooltip>
+                            <depends>
+                                <allowspecific_customers>1</allowspecific_customers>
+                            </depends>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_customerGroups</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcustomers>
+                        <notallowedshippingmethods translate="label comment tooltip">
+                            <label>Not allowed by shipping methods</label>
+                            <comment>Select all the shipping methods where the AfterPay module should NOT be allowed for.</comment>
+                            <tooltip>Use CTRL + mouseclick to select multiple entries.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>225</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notallowedshippingmethods>
+                        <advisoryprocess>
+                            <label>Advisory process</label>
+                            <comment>Select Yes to enable advisory process.</comment>
+                            <tooltip>Only use in cooperation with AfterPay</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>226</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advisoryprocess>
+                        <sort_order>
+                            <label>Sort order</label>
+                            <tooltip>This value will determine in what order the portfolio's will appear to the customer</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </afterpay_portfolio_e>
+                <afterpay_portfolio_f>
+                    <label>AfterPay Module - Portfolio F</label>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment tooltip">
+                            <label>Portfolio enabled</label>
+                            <comment>Select Yes to enable the portfolio.</comment>
+                            <tooltip>To use the module it needs to be enabled. When No is selected the module isn’t shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <current_ip_address_for_restriction translate="label comment tooltip">
+                            <label>Your current IP Adresses</label>
+                            <frontend_model>afterpay/adminhtml_ipaddress</frontend_model>
+                            <sort_order>11</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </current_ip_address_for_restriction>
+                        <limit_by_ip translate="label comment tooltip">
+                            <label>Show payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip>
+                        <limit_by_ip_ips translate="label comment tooltip">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order> 
+                            <depends>
+                                <limit_by_ip>1</limit_by_ip>
+                            </depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_by_ip_ips>
+                        <reversed_iprestriction translate="label comment">
+                            <label>Hide payment method only for certain IP adresses</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction>
+                        <reversed_iprestriction_ips translate="label comment">
+                            <label>IP Adresses</label>
+                            <comment>Use comma to seperate IP adresses</comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <reversed_iprestriction>1</reversed_iprestriction>
+                            </depends>
+                            <sort_order>15</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reversed_iprestriction_ips>
+                        <mode translate="label comment tooltip">
+                            <label>Mode</label>
+                            <comment>Select Live to preform live transactions.</comment>
+                            <tooltip>When the base configuration is still in test mode. Live mode of the portfolio is overruled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_testLive</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode> 
+                        <live_merchant_id translate="label comment tooltip">
+                            <label>Live merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <tooltip>To get an account contact AfterPay.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_merchant_id>
+                        <test_merchant_id translate="label comment">
+                            <label>Test merchantID</label>
+                            <comment>Your user account is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_merchant_id>
+                        <portfolio_id>
+                            <label>Portfolio ID</label>
+                            <comment>Afterpay will deliver a portfolio ID</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_id>
+                        <live_password translate="label comment">
+                            <label>Live Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_password>
+                        <test_password translate="label comment">
+                            <label>Test Password</label>
+                            <comment>Your Password is provided by AfterPay.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_password>
+                        <portfolio_country>
+                            <label>Portfolio country</label>
+                            <comment>Select the country of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioCountry</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_country>
+                        <portfolio_type>
+                            <label>Portfolio type</label>
+                            <comment>Select the type of transaction contract</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_type>
+                        <portfolio_showbankaccount>
+                            <label>Show bankaccount input field</label>
+                            <comment>Select Yes to show the bankaccount input field.</comment>
+                            <tooltip>When No is selected the bankaccount number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>51</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showbankaccount>
+                        <portfolio_showgender>
+                            <label>Show gender input field</label>
+                            <comment>Select Yes to show the gender input field.</comment>
+                            <tooltip>When No is selected the gender is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>52</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showgender>
+                        <portfolio_showphonenumber>
+                            <label>Show phone number input field</label>
+                            <comment>Select Yes to show the phone number input field.</comment>
+                            <tooltip>When No is selected the phone number is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>53</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showphonenumber>
+                        <portfolio_showdob>
+                            <label>Show date of birth input field</label>
+                            <comment>Select Yes to show the date of birth input field.</comment>
+                            <tooltip>When No is selected the date of birth is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>54</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showdob>
+                        <portfolio_showterms>
+                            <label>Show terms and conditions checkbox</label>
+                            <comment>Select Yes to show the terms and conditions checkbox.</comment>
+                            <tooltip>When No is selected the AfterPay Terms and Conditions checkbox is not shown on the front of the shop.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_showterms>
+                        <area>
+                            <label>Portfolio area</label>
+                            <comment>Select where the portfolio will be available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_portfolioArea</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </area>
+                        <portfolio_label>
+                            <label>Portfolio label</label>
+                            <comment>The label shown on the frontend</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_label>
+                        <portfolio_footnote>
+                            <label>Portfolio footnote</label>
+                            <comment>Shown after label</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_footnote>
+                        <portfolio_extended_information>
+                            <label>Portfolio extended information</label>
+                            <comment>Extended information about the AfterPay Payment Method which for example will be included in transactional emails.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_extended_information>
+                        <portfolio_min_amount>
+                            <label>Minimal Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_min_amount>
+                        <portfolio_max_amount>
+                            <label>Maximum Amount</label>
+                            <comment>No value will allow all</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount>
+                        <portfolio_max_amount_new_customers>
+                            <label>Maximum Amount for New AfterPay Customers</label>
+                            <comment>N.B. This value does not influence whether or not this portfolio is available. This is only used as a label!</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </portfolio_max_amount_new_customers>
+                        <order_status_acceptedni translate="label">
+                            <label>Status Accepted No Invoice</label>
+                            <comment>New is the default state for a new order without invoice.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNewni</source_model>
+                            <sort_order>119</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_acceptedni>
+                        <order_status_pending translate="label">
+                            <label>Status Pending</label>
+                            <comment>Pending is the default state for a new order.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to new.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_pending>
+                        <order_status_accepted translate="label">
+                            <label>Status Accepted</label>
+                            <comment>Processing is the default state for an order with an invoice or a shipment.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Refused</label>
+                            <comment>Canceled is the default state for an unprocessed order terminated.</comment>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesCanceled</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refused>
+                        <allowspecific translate="label">
+                            <label>Allowed Countries</label>
+                            <tooltip>Select whether all countries may make use of this payment option, or only specific countries.</tooltip>
+                            <frontend_type>allowspecific</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific Country</label>
+                            <comment>Only available if 'Payment from applicable countries' is set to 'specific countries'.</comment>
+                            <tooltip>Define which countries are allowed to make use of this portfolio.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <allowspecific_customers translate="label">
+                            <label>Allowed Client groups</label>
+                            <tooltip>Select whether all customers may make use of this payment option, or only customers from specific customer groups.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_allowSpecificCustomers</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific_customers>
+                        <specificcustomers translate="label">
+                            <label>Specific client groups</label>
+                            <comment>Only available if 'Allowed Client groups' is set to 'specific client groups'.</comment>
+                            <tooltip>Define which client groups are allowed to make use of this portfolio.</tooltip>
+                            <depends>
+                                <allowspecific_customers>1</allowspecific_customers>
+                            </depends>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>afterpay/sources_customerGroups</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcustomers>
+                        <notallowedshippingmethods translate="label comment tooltip">
+                            <label>Not allowed by shipping methods</label>
+                            <comment>Select all the shipping methods where the AfterPay module should NOT be allowed for.</comment>
+                            <tooltip>Use CTRL + mouseclick to select multiple entries.</tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>225</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notallowedshippingmethods>
+                        <advisoryprocess>
+                            <label>Advisory process</label>
+                            <comment>Select Yes to enable advisory process.</comment>
+                            <tooltip>Only use in cooperation with AfterPay</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>226</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advisoryprocess>
+                        <sort_order>
+                            <label>Sort order</label>
+                            <tooltip>This value will determine in what order the portfolio's will appear to the customer</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </afterpay_portfolio_f>
+                <afterpay_capture>
+                    <label>AfterPay Module - Capture Settings</label>
+                    <sort_order>5000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <capture_mode>
+                            <label>Capture Mode</label>
+                            <tooltip>Select whether AfterPay will automatically attempt to capture the order or if the module should manually attempt to capture the order.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_captureMode</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </capture_mode>
+                        <order_status_accepted translate="label">
+                            <label>Status Capture Request Accepted</label>
+                            <tooltip>For administrative purposes a new status can be created connected to processing.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesProcessing</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status_accepted>
+                        <order_status_refused translate="label">
+                            <label>Status Capture Request Refused</label>
+                            <tooltip>For administrative purposes a new status can be created connected to Canceled.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>afterpay/sources_statusesNew</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status_refused>
+                    </fields>
+                </afterpay_capture>
+                <afterpay_refund>
+                    <label>AfterPay Module - Refund Settings</label>
+                    <sort_order>6000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled>
+                            <label>Enable refunding</label>
+                            <tooltip>If you set this to 'No', you will only ber able to perform offline refunds on AfterPay transactions</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </afterpay_refund>
+            </groups>
+        </afterpay>
+    </sections>
+</config>

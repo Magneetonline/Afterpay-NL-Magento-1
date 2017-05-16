@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2 (branches/2.2-7015; 2012-02-20T20:31:25+0000) JAXWS-RI/2.2.6 JAXWS/2.2 svn-revision#unknown.--><xs:schema version="1.0" targetNamespace="http://www.afterpay.nl/ad3/" xmlns:tns="http://www.afterpay.nl/ad3/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AccessDeniedException" type="tns:AccessDeniedException"/>
+  <xs:element name="AuthenticationException" type="tns:AuthenticationException"/>
+  <xs:element name="IllegalParameterException" type="tns:IllegalParameterException"/>
+  <xs:element name="SystemConfigurationException" type="tns:SystemConfigurationException"/>
+  <xs:element name="cancelOrder" type="tns:cancelOrder"/>
+  <xs:element name="cancelOrderResponse" type="tns:cancelOrderResponse"/>
+  <xs:element name="captureFull" type="tns:captureFull"/>
+  <xs:element name="captureFullResponse" type="tns:captureFullResponse"/>
+  <xs:element name="capturePartial" type="tns:capturePartial"/>
+  <xs:element name="capturePartialResponse" type="tns:capturePartialResponse"/>
+  <xs:element name="doReauthorization" type="tns:doReauthorization"/>
+  <xs:element name="doReauthorizationResponse" type="tns:doReauthorizationResponse"/>
+  <xs:element name="doVoid" type="tns:doVoid"/>
+  <xs:element name="doVoidResponse" type="tns:doVoidResponse"/>
+  <xs:element name="refundFullInvoice" type="tns:refundFullInvoice"/>
+  <xs:element name="refundFullInvoiceResponse" type="tns:refundFullInvoiceResponse"/>
+  <xs:element name="refundInvoice" type="tns:refundInvoice"/>
+  <xs:element name="refundInvoiceResponse" type="tns:refundInvoiceResponse"/>
+  <xs:element name="requestNewInvoiceNumber" type="tns:requestNewInvoiceNumber"/>
+  <xs:element name="requestNewInvoiceNumberResponse" type="tns:requestNewInvoiceNumberResponse"/>
+  <xs:element name="requestOrderStatus" type="tns:requestOrderStatus"/>
+  <xs:element name="requestOrderStatusResponse" type="tns:requestOrderStatusResponse"/>
+  <xs:complexType name="refundFullInvoice">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="refundobject" type="tns:refundObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authorization">
+    <xs:sequence>
+      <xs:element name="authorizationtoken" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantId" type="xs:int"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="portfolioId" type="xs:int"/>
+      <xs:element name="securityhash" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refundObject">
+    <xs:complexContent>
+      <xs:extension base="tns:orderManagementObject">
+        <xs:sequence>
+          <xs:element name="creditInvoicenNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="orderManagementObject">
+    <xs:sequence>
+      <xs:element name="extrafields" type="tns:extraField" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="invoicelines" type="tns:orderLine" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="invoicenumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionReference" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionkey" type="tns:transactionKey"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extraField">
+    <xs:sequence>
+      <xs:element name="nameField" type="xs:string" minOccurs="0"/>
+      <xs:element name="valueField" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderLine">
+    <xs:sequence>
+      <xs:element name="articleDescription" type="xs:string"/>
+      <xs:element name="articleId" type="xs:string"/>
+      <xs:element name="netunitprice" type="xs:double" minOccurs="0"/>
+      <xs:element name="quantity" type="xs:int"/>
+      <xs:element name="unitprice" type="xs:int"/>
+      <xs:element name="vatcategory" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transactionKey">
+    <xs:sequence>
+      <xs:element name="ordernumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="parentTransactionreference" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refundFullInvoiceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderManagementResponse">
+    <xs:sequence>
+      <xs:element name="checksum" type="xs:string" minOccurs="0"/>
+      <xs:element name="extrafields" type="tns:extraField" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="failures" type="tns:fieldValidationFailure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="resultId" type="xs:int"/>
+      <xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="substatusCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestampIn" type="xs:long" minOccurs="0"/>
+      <xs:element name="timestampOut" type="xs:long" minOccurs="0"/>
+      <xs:element name="totalInvoicedAmount" type="xs:int" minOccurs="0"/>
+      <xs:element name="totalReservedAmount" type="xs:int" minOccurs="0"/>
+      <xs:element name="transactionId" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fieldValidationFailure">
+    <xs:sequence>
+      <xs:element name="fieldname" type="xs:string" minOccurs="0"/>
+      <xs:element name="failure" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthenticationException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccessDeniedException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IllegalParameterException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refundInvoice">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="refundobject" type="tns:refundObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refundInvoiceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requestNewInvoiceNumber">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="ordermanagementobject" type="tns:orderManagementObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requestNewInvoiceNumberResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:simpleOrderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simpleOrderManagementResponse">
+    <xs:sequence>
+      <xs:element name="reponse" type="xs:string" minOccurs="0"/>
+      <xs:element name="resultId" type="xs:int" minOccurs="0"/>
+      <xs:element name="timestampIn" type="xs:long" minOccurs="0"/>
+      <xs:element name="timestampOut" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemConfigurationException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doVoid">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="ordermanagementobject" type="tns:orderManagementObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doVoidResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelOrder">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="ordermanagementobject" type="tns:orderManagementObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelOrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="capturePartial">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="captureobject" type="tns:captureObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="captureObject">
+    <xs:complexContent>
+      <xs:extension base="tns:orderManagementObject">
+        <xs:sequence>
+          <xs:element name="capturedelaydays" type="xs:int"/>
+          <xs:element name="shippingCompany" type="xs:string"/>
+          <xs:element name="trackingnumber" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="capturePartialResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doReauthorization">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="refundobject" type="tns:reauthorizationObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reauthorizationObject">
+    <xs:complexContent>
+      <xs:extension base="tns:orderManagementObject">
+        <xs:sequence>
+          <xs:element name="newbedrag" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="doReauthorizationResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requestOrderStatus">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="ordermanagementobject" type="tns:orderManagementObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requestOrderStatusResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="captureFull">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="captureobject" type="tns:captureObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="captureFullResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderManagementResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

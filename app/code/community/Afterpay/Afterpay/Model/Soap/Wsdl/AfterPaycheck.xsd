@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2 (branches/2.2-7015; 2012-02-20T20:31:25+0000) JAXWS-RI/2.2.6 JAXWS/2.2 svn-revision#unknown.--><xs:schema version="1.0" targetNamespace="http://www.afterpay.nl/ad3/" xmlns:tns="http://www.afterpay.nl/ad3/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AccessDeniedException" type="tns:AccessDeniedException"/>
+  <xs:element name="AuthenticationException" type="tns:AuthenticationException"/>
+  <xs:element name="IllegalParameterException" type="tns:IllegalParameterException"/>
+  <xs:element name="SystemConfigurationException" type="tns:SystemConfigurationException"/>
+  <xs:element name="validateAndCheckB2BOrder" type="tns:validateAndCheckB2BOrder"/>
+  <xs:element name="validateAndCheckB2BOrderResponse" type="tns:validateAndCheckB2BOrderResponse"/>
+  <xs:element name="validateAndCheckB2COrder" type="tns:validateAndCheckB2COrder"/>
+  <xs:element name="validateAndCheckB2COrderResponse" type="tns:validateAndCheckB2COrderResponse"/>
+  <xs:element name="validateAndCheckInstallmentOrder" type="tns:validateAndCheckInstallmentOrder"/>
+  <xs:element name="validateAndCheckInstallmentOrderResponse" type="tns:validateAndCheckInstallmentOrderResponse"/>
+  <xs:complexType name="validateAndCheckB2COrder">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="b2corder" type="tns:afterPayB2COrder" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authorization">
+    <xs:sequence>
+      <xs:element name="authorizationtoken" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantId" type="xs:int"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="portfolioId" type="xs:int"/>
+      <xs:element name="securityhash" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="afterPayB2COrder">
+    <xs:complexContent>
+      <xs:extension base="tns:afterPayOrder">
+        <xs:sequence>
+          <xs:element name="b2cbilltoAddress" type="tns:b2CAddress"/>
+          <xs:element name="b2cshiptoAddress" type="tns:b2CAddress" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="afterPayOrder" abstract="true">
+    <xs:sequence>
+      <xs:element name="bankId" type="xs:int" minOccurs="0"/>
+      <xs:element name="bankaccountNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="currency" type="xs:string"/>
+      <xs:element name="exchangeDate" type="xs:string" minOccurs="0"/>
+      <xs:element name="exchangeRate" type="xs:double" minOccurs="0"/>
+      <xs:element name="extrafields" type="tns:extraField" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ipAddress" type="xs:string"/>
+      <xs:element name="orderlines" type="tns:orderLine" maxOccurs="unbounded"/>
+      <xs:element name="ordernumber" type="xs:string"/>
+      <xs:element name="parentTransactionreference" type="xs:string" minOccurs="0"/>
+      <xs:element name="shopdetails" type="tns:shop" minOccurs="0"/>
+      <xs:element name="shopper" type="tns:shopper" minOccurs="0"/>
+      <xs:element name="totalOrderAmount" type="xs:int"/>
+      <xs:element name="totalOrderNetAmount" type="xs:double" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="b2CAddress">
+    <xs:complexContent>
+      <xs:extension base="tns:address">
+        <xs:sequence>
+          <xs:element name="referencePerson" type="tns:person"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="address" abstract="true">
+    <xs:sequence>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="housenumber" type="xs:string"/>
+      <xs:element name="housenumberAddition" type="xs:string" minOccurs="0"/>
+      <xs:element name="isoCountryCode" type="xs:string"/>
+      <xs:element name="postalcode" type="xs:string"/>
+      <xs:element name="region" type="xs:string" minOccurs="0"/>
+      <xs:element name="streetname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="person">
+    <xs:sequence>
+      <xs:element name="dateofbirth" type="xs:dateTime"/>
+      <xs:element name="emailaddress" type="xs:string"/>
+      <xs:element name="gender" type="xs:string" minOccurs="0"/>
+      <xs:element name="initials" type="xs:string"/>
+      <xs:element name="isoLanguage" type="xs:string"/>
+      <xs:element name="lastname" type="xs:string"/>
+      <xs:element name="phonenumber1" type="xs:string"/>
+      <xs:element name="phonenumber2" type="xs:string" minOccurs="0"/>
+      <xs:element name="prefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extraField">
+    <xs:sequence>
+      <xs:element name="nameField" type="xs:string" minOccurs="0"/>
+      <xs:element name="valueField" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderLine">
+    <xs:sequence>
+      <xs:element name="articleDescription" type="xs:string"/>
+      <xs:element name="articleId" type="xs:string"/>
+      <xs:element name="netunitprice" type="xs:double" minOccurs="0"/>
+      <xs:element name="quantity" type="xs:int"/>
+      <xs:element name="unitprice" type="xs:int"/>
+      <xs:element name="vatcategory" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="shop">
+    <xs:sequence>
+      <xs:element name="afterPayPluginSupplier" type="xs:string" minOccurs="0"/>
+      <xs:element name="afterPayPluginVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="intermediarId" type="xs:int" minOccurs="0"/>
+      <xs:element name="shopURL" type="xs:string" minOccurs="0"/>
+      <xs:element name="webshopLanguage" type="xs:string" minOccurs="0"/>
+      <xs:element name="webshopPlatform" type="xs:string" minOccurs="0"/>
+      <xs:element name="webshopPlatformVersion" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="shopper">
+    <xs:sequence>
+      <xs:element name="afterPayId" type="xs:string" minOccurs="0"/>
+      <xs:element name="afterPayToken" type="xs:string" minOccurs="0"/>
+      <xs:element name="customerNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="finbox" type="xs:boolean"/>
+      <xs:element name="fingerprint" type="xs:string" minOccurs="0"/>
+      <xs:element name="hasCustcard" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasPayments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="profileCreated" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="referString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateAndCheckB2COrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderResponse">
+    <xs:sequence>
+      <xs:element name="afterPayOrderReference" type="xs:string" minOccurs="0"/>
+      <xs:element name="checksum" type="xs:string" minOccurs="0"/>
+      <xs:element name="extrafields" type="tns:extraField" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="failures" type="tns:fieldValidationFailureExt" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="rejectCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="rejectDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="resultId" type="xs:int" minOccurs="0"/>
+      <xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="substatusCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestampIn" type="xs:long" minOccurs="0"/>
+      <xs:element name="timestampOut" type="xs:long" minOccurs="0"/>
+      <xs:element name="transactionId" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fieldValidationFailureExt">
+    <xs:sequence>
+      <xs:element name="failure" type="xs:string" minOccurs="0"/>
+      <xs:element name="fieldname" type="xs:string" minOccurs="0"/>
+      <xs:element name="suggestedvalue" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthenticationException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccessDeniedException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IllegalParameterException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemConfigurationException">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateAndCheckInstallmentOrder">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="arg1" type="tns:afterPayOrder" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateAndCheckInstallmentOrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateAndCheckB2BOrder">
+    <xs:sequence>
+      <xs:element name="authorization" type="tns:authorization" minOccurs="0"/>
+      <xs:element name="b2border" type="tns:afterPayB2BOrder" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="afterPayB2BOrder">
+    <xs:complexContent>
+      <xs:extension base="tns:afterPayOrder">
+        <xs:sequence>
+          <xs:element name="b2bbilltoAddress" type="tns:b2BAddress" minOccurs="0"/>
+          <xs:element name="b2bshiptoAddress" type="tns:b2BAddress" minOccurs="0"/>
+          <xs:element name="company" type="tns:company"/>
+          <xs:element name="costcenter" type="xs:string" minOccurs="0"/>
+          <xs:element name="person" type="tns:person"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="b2BAddress">
+    <xs:complexContent>
+      <xs:extension base="tns:address">
+        <xs:sequence>
+          <xs:element name="careOf" type="xs:string" minOccurs="0"/>
+          <xs:element name="phone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="company">
+    <xs:sequence>
+      <xs:element name="cocnumber" type="xs:string"/>
+      <xs:element name="companyname" type="xs:string"/>
+      <xs:element name="department" type="xs:string" minOccurs="0"/>
+      <xs:element name="establishmentnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="vatnumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateAndCheckB2BOrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

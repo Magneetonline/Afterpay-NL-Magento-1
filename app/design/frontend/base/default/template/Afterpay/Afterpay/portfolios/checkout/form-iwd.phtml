@@ -1,0 +1,117 @@
+<?php $this->setBlockData()?>
+<?php $_code = $this->getMethodCode(); ?>
+<?php $_helper = $this->helper('afterpay');?>
+<?php $isEnterprise = (bool) Mage::getConfig()->getModuleConfig("Enterprise_Enterprise")->version;?>
+
+<div id="payment-errors" class="validation-advice" style="display:none;"></div>
+
+<ul id="payment_form_<?php echo $_code; ?>" class="form-list opc-cc-container" style="display:none;">
+    <li>
+        <?php if($this->country == 'dede') : ?>
+        <div class="field">
+            <label for="<?php echo $_code; ?>_gender" class = "required"><em>*</em><?php echo $_helper->__('Gender:'); ?></label>
+            <div class="input-box" id="">
+                <input type="radio" name="payment[<?php echo $_code; ?>][gender]" value="F" id="<?php echo $_code?>_gender_v" checked="checked">
+                <label style="float:none" for="<?php echo $_code?>_gender_v"><?php echo $_helper->__('Female'); ?></label>
+                <input type="radio" name="payment[<?php echo $_code; ?>][gender]" value="M" id="<?php echo $_code?>_gender_m">
+                <label style="float:none" for="<?php echo $_code?>_gender_m"><?php echo $_helper->__('Male'); ?></label>
+            </div>
+        </div>
+        <?php else: ?>
+        <?php if ($this->showGender()): ?>
+        <div class="field">
+            <label for="<?php echo $_code; ?>_gender" class = "required"><em>*</em><?php echo $_helper->__('Gender:'); ?></label>
+            <div class="input-box" id="">
+                <input type="radio" name="payment[<?php echo $_code; ?>][gender]" value="V" id="<?php echo $_code?>_gender_v" checked="checked">
+                <label style="float:none" for="<?php echo $_code?>_gender_v"><?php echo $_helper->__('Female'); ?></label>
+                <input type="radio" name="payment[<?php echo $_code; ?>][gender]" value="M" id="<?php echo $_code?>_gender_m">
+                <label style="float:none" for="<?php echo $_code?>_gender_m"><?php echo $_helper->__('Male'); ?></label>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php endif; ?>
+    <?php if ($isEnterprise): ?>
+        </li>
+        <li>
+    <?php endif;?>
+    <?php if (!$this->isB2B()): ?>
+        <?php if ($this->showDob()): ?>
+        <div class="field">
+            <?php 
+            echo $this->getLayout()->createBlock('afterpay/customer_widget_dob')
+                                   ->setFieldIdFormat($_code . ':billing:%s')
+                                   ->setFieldNameFormat('payment[' . $_code . '][%s]')
+                                   ->setIsRequired(true)
+                                   ->setPaymentMethodCode($_code)
+                                   ->toHtml() 
+            ?>
+         </div>
+        </li>
+        <?php endif; ?>
+        <?php if ($this->showBankaccount()): ?>
+        <li> 
+            <div class="field">
+                <label for="<?php echo $_code; ?>_bankaccount" class="required"><em>*</em><?php echo $_helper->__('Bank account number:'); ?></label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" id="<?php echo $_code; ?>_bankaccount" name="payment[<?php echo $_code; ?>][bankaccount]" style="">
+                </div>
+            </div>
+        </li>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if ($this->isB2B()): ?>
+        <li>
+            <div class="field">
+                <label for="<?php echo $_code; ?>_companyname" class="required"><em>*</em><?php echo $_helper->__('Company name:'); ?></label>
+                <div class="input-box">
+                    <input type="text" value="<?php echo $this->getCompany(); ?>" class="input-text required-entry" id="<?php echo $_code; ?>_companyname" name="payment[<?php echo $_code; ?>][companyname]">
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="field">
+                <label for="<?php echo $_code; ?>_coc" class="required"><em>*</em><?php echo $_helper->__('Coc number:'); ?></label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" id="<?php echo $_code; ?>_coc" name="payment[<?php echo $_code; ?>][coc]">
+                </div>
+            </div>
+        </li>
+    <?php endif; ?>
+    <?php if ($this->showPhonenumber()): ?>
+    <li> 
+        <div class="field">
+            <label for="<?php echo $_code; ?>_phonenumber" class="required"><em>*</em><?php echo $_helper->__('Phone number'); ?>:</label>
+            <div class="input-box">
+                <input type="text" class="input-text required-entry" id="<?php echo $_code; ?>_phonenumber" name="payment[<?php echo $_code; ?>][phonenumber]" style="">
+            </div>
+        </div>
+    </li>
+    <?php endif; ?>
+    <?php if (!$this->isAdvisoryprocess() && $this->country != 'dede'): ?>
+    <?php if ($this->showTerms()): ?>
+    <li>
+        <input type="checkbox" class="checkbox required-entry" id="<?php echo $_code; ?>_termsAndConditions" name="payment[<?php echo $_code; ?>][conditions]">
+        <label for="<?php echo $_code; ?>_termsAndConditions" class="required">
+            <em>*</em>
+            <?php echo $_helper->__(
+                'Ik ga akkoord met de %sbetalingsvoorwaarden%s van AfterPay',
+                $this->paymentConditionsUrl,
+                $this->anchorClose
+            );?>
+        </label>
+    </li>
+    <?php endif; ?>
+    <?php elseif ($this->isAdvisoryprocess() && $this->country != 'dede'): ?>
+    <li>
+        <input type="checkbox" class=" checkboxrequired-entry" id="<?php echo $_code; ?>_termsAndConditions" name="payment[<?php echo $_code; ?>][conditions]">
+        <label for="<?php echo $_code; ?>_termsAndConditions" class="required">
+            <em>*</em>
+            <?php echo $_helper->__(
+                'Ik ga akkoord met de %sbetalingsvoorwaarden%s van Mijnbetaalplan',
+                $this->paymentConditionsUrl,
+                $this->anchorClose
+            );?>
+        </label>
+    </li>
+    <?php endif; ?>
+</ul>
